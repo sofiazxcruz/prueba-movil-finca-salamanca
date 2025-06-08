@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabañas y Combos - Ecofinca Salamanca</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function mostrarCombo() {
+            var seleccion = document.getElementById("opcionCombo").value;
+            var cabana = document.getElementById("cabanaCompleta");
+            var paseDia = document.getElementById("paseDia");
+
+            cabana.style.display = "none";
+            paseDia.style.display = "none";
+
+            if (seleccion === "cabana") {
+                cabana.style.display = "block";
+            } else if (seleccion === "pase") {
+                paseDia.style.display = "block";
+            }
+        }
+    </script>
+</head>
+<style>
+    .hidden {
+        display: none;
+    }
+
+    .btn-logout {
+        background-color: #4CAF50;
+        padding: 12px 30px;
+        border: none;
+        margin-right: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        color: white;
+    }
+
+    .btn-logout:hover {
+        background-color:green ;
+    }
+    nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>
+<body class="cabanas-page">
+
+    <!-- Header y Navbar -->
+    <header>
+        <h1>Ecofinca Salamanca</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="login.html" class="login-btn">Iniciar Sesión</a></li>
+            </ul>
+            <button class="hidden btn-logout" id="btn-logout">Salir</button>
+        </nav>
+    </header>
+
+    <!-- Contenido de la página -->
+    <section class="combos">
+        <h2>Cabañas y Combos</h2>
+
+        <label for="opcionCombo">Seleccione una opción:</label>
+        <select id="opcionCombo" onchange="mostrarCombo()">
+            <option value="">-- Elegir --</option>
+            <option value="cabana">Cabaña Completa</option>
+            <option value="pase">Pase del Día</option>
+        </select>
+
+        <div id="cabanaCompleta" class="combo">
+            <h3>Cabaña Completa</h3>
+            <p>Incluye:</p>
+            <ul>
+                <li>Internet</li>
+                <li>Baño privado</li>
+                <li>Energía eléctrica</li>
+                <li>Paseo guiado por la finca</li>
+            </ul>
+            <p><strong>Precio por noche:</strong></p>
+            <ul>
+                <li>$125 con transporte</li>
+                <li>$100 sin transporte</li>
+            </ul>
+            <a href="pago.html" class="cta-btn">Reservar Ahora</a>
+        </div>
+
+        <div id="paseDia" class="combo">
+            <h3>Pase del Día</h3>
+            <p>Incluye acceso al río y almuerzo a elección:</p>
+            <ul>
+                <li>Hamburguesa</li>
+                <li>Pizza</li>
+                <li>Lasaña</li>
+            </ul>
+            <a href="pagoPaseo.html" class="cta-btn">Reservar Ahora</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Ecofinca Salamanca - Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+    // Mostrar mensaje si existe en localStorage
+        const user = localStorage.getItem('isRegister')
+
+        document.getElementById('btn-logout').addEventListener('click', () => {
+            localStorage.removeItem('isRegister'); // Limpia para que no aparezca siempre
+            window.location.href = '/EcoFinca-Salamanca/mi-sitio-web/index.html';
+        })
+
+        if (user){
+            document.querySelector('.login-btn').classList.add('hidden')
+            document.getElementById('btn-logout').classList.remove('hidden')
+        } else {
+            document.getElementById('btn-logout').classList.add('hidden')
+            document.querySelector('.login-btn').classList.remove('hidden')
+        }
+    </script>
+
+</body>
+</html>

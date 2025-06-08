@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/register.css">
+    <title>Registarse</title>
+</head>
+<body>
+    <main class="form__container">
+        <h1 class="title" >Regístrate en Eco Finca Salamanca</h1>
+
+        <form action="" method="post" id="formulario_registro" class="form">
+            <div class="form__group">
+                <label for="username">Nombre de Usuario <span class="red">*</span></label>
+                <input class="form__group--input" type="text" id="username" name="username">
+                <span id="username_error" class="error_message"></span>
+            </div>
+            <div class="form__group">
+                <label for="email">Correo electrónico <span class="red">*</span></label>
+                <input class="form__group--input" type="email" id="email" name="email" >
+                <span id="email_error" class="error_message"></span>
+            </div> 
+            <div class="form__group">
+                <label for="password">Contraseña <span class="red">*</span></label>
+                <input class="form__group--input" type="password" id="password" name="password" >
+                <span id="password_error" class="error_message"></span>
+            </div>
+            <div class="form__group">
+                <label for="confirmar_password">Confirmar contraseña <span class="red">*</span></label>
+                <input class="form__group--input" type="password" id="confirmar_password" name="confirmar_password" required>
+                <span id="confirmar_password_error" class="error_message"></span>
+            </div>
+            <div class="form__footer">
+                <button type="submit" class="form__footer--btn">Registarse</button>
+                <p>¿Ya tienes una cuenta?</p>
+                <p>Inicia sesión <a href="login.html" class="form__footer--link">aquí</a></p>
+                <a href="index.html" class="form__footer--link" >Regresar</a>
+            </div>
+        </form>
+    </main>
+</body>
+
+<script>
+    const formulario = document.getElementById('formulario_registro')
+    const usernameError = document.getElementById('username_error');
+    const emailError = document.getElementById('email_error');
+    const passwordError = document.getElementById('password_error');
+    const confirmarPasswordError = document.getElementById('confirmar_password_error');
+
+
+    formulario.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        let valid = true;
+
+        usernameError.textContent = '';
+        emailError.textContent = '';
+        passwordError.textContent = '';
+        confirmarPasswordError.textContent = '';
+
+        const nombreUsuario = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const confirmarPassword = document.getElementById('confirmar_password').value;
+
+        if (nombreUsuario === ''){
+            usernameError.textContent = 'El nombre de usuario es obligatorio'
+            valid = false;
+        }
+
+        if (email === ''){
+            emailError.textContent = 'El correo electrónico es obligatorio'
+            valid = false;
+        }
+        
+        if (password === ''){
+            passwordError.textContent = 'La contraseña es obligatoria'
+            valid = false;
+        }
+
+        if (confirmarPassword === ''){
+            confirmarPasswordError.textContent = 'La confirmación de la contraseña es obligatoria'
+            valid = false;
+        }
+
+        if (password !== confirmarPassword) {
+            confirmarPasswordError.textContent = 'Las contraseñas no coinciden';
+            valid = false;
+        }
+
+        if (!valid) {
+            return; 
+        }
+
+
+        const formData = new FormData(formulario);
+
+        fetch('./controller/register.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.status === 201) {
+                // Redirección si el registro fue exitoso
+                localStorage.setItem('registroExitoso', `¡Registro exitoso! Bienvenido a Eco Finca Salamanca ${formData.get('username')}.`);
+                window.location.href = '/EcoFinca-Salamanca/mi-sitio-web/index.html';
+            } else {
+                return response.text().then(text => {
+                    console.error("Error en el registro:", text);
+                    alert("Error al registrarse. Intenta nuevamente.");
+                });
+            }
+        })
+        .catch(error => {
+            console.error("Error en la solicitud:", error);
+            alert("Hubo un problema al conectar con el servidor.");
+        });
+    });
+</script>
+</html>

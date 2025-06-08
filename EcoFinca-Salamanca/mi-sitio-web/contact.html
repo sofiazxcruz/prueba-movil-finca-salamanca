@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contáctanos - Ecofinca Salamanca</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    .hidden {
+        display: none;
+    }
+
+    .btn-logout {
+        background-color: #fcfcfc;
+        padding: 12px 30px;
+        border: none;
+        margin-right: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        color: black;
+    }
+
+    .btn-logout:hover {
+        background-color:white ;
+    }
+    nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>
+<body>
+
+    <header>
+        <h1>Ecofinca Salamanca</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="login.html" class="login-btn">Iniciar Sesión</a></li>
+            </ul>
+            <button class="btn-logout" id="btn-logout">Salir</button>
+        </nav>
+    </header>
+
+    <section class="contacto">
+        <h2>Información de Contacto</h2>
+        <p>¿Deseas hacer una reserva o tienes alguna consulta? Contáctanos a través de los siguientes medios:</p>
+
+        <ul>
+            <li><strong>Correo electrónico:</strong> msalamanca128@gmail.com</li>
+            <li><strong>Teléfono 1 (WhatsApp):</strong> +503 6053 8768</li>
+            <li><strong>Teléfono 2:</strong> +503 6145 4057</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>© 2025 Ecofinca Salamanca - Todos los derechos reservados.</p>
+    </footer>
+    <script>
+        // Mostrar mensaje si existe en localStorage
+        const mensaje = localStorage.getItem('registroExitoso');
+        const user = localStorage.getItem('isRegister')
+        if (mensaje) {
+            alert(mensaje); // O puedes mostrarlo dentro del HTML si quieres
+            localStorage.removeItem('registroExitoso'); // Limpia para que no aparezca siempre
+        }
+
+        document.getElementById('btn-logout').addEventListener('click', () => {
+            localStorage.removeItem('isRegister'); // Limpia para que no aparezca siempre
+            window.location.href = '/EcoFinca-Salamanca/mi-sitio-web/index.html';
+        })
+
+        if (user){
+            document.querySelector('.login-btn').classList.add('hidden')
+            document.getElementById('btn-logout').classList.remove('hidden')
+        } else {
+            document.getElementById('btn-logout').classList.add('hidden')
+            document.querySelector('.login-btn').classList.remove('hidden')
+        }
+    </script>
+
+</body>
+</html>

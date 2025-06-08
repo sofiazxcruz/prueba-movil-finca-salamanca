@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecofinca Salamanca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f2f7f1;
+            color: #333;
+        }
+
+        nav {
+            background-color: #2e7d32;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #c8e6c9;
+        }
+
+        .btn-logout {
+            background-color: #66bb6a;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            color: white;
+        }
+
+        .btn-logout:hover {
+            background-color: #4caf50;
+        }
+
+        .hero-slider {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            width: 100%;
+            background-color: #a5d6a7;
+        }
+
+        .slide {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(0.5);
+        }
+
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+        }
+
+        .hero-text h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .hero-text p {
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: white;
+            color: #2e7d32;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #f1f8e9;
+            color: #1b5e20;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            padding: 10px;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            user-select: none;
+            transform: translateY(-50%);
+        }
+
+        .prev { left: 20px; }
+        .next { right: 20px; }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 60px 20px;
+            background-color: #ffffff;
+            gap: 30px;
+        }
+
+        .feature-box {
+            background-color: #e8f5e9;
+            border-radius: 12px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+
+        footer {
+            background-color: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* === Estilos responsivos para móviles === */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-text h2 {
+                font-size: 1.5em;
+            }
+
+            .hero-text p {
+                font-size: 1em;
+            }
+
+            .cta-btn {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+
+            .features {
+                flex-direction: column;
+                padding: 40px 10px;
+            }
+
+            .feature-box {
+                width: 90%;
+            }
+
+            .btn-logout {
+                width: 80%;
+                padding: 10px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="contact.html">Contacto</a></li>
+            <li><a href="cabanas.html">Cabañas y Combos</a></li>
+            <li><a href="login.html" class="login-btn">Iniciar Sesión</a></li>
+        </ul>
+        <button class="hidden btn-logout" id="btn-logout">Salir</button>
+    </nav>
+
+    <section class="hero-slider">
+        <div class="slide fade">
+            <img src="imagenes/imagenes (1).jpg" alt="Ecofinca 1">
+            <div class="hero-text">
+                <h2>Conéctate con la Naturaleza</h2>
+                <p id="user"></p>
+                <p>Disfruta de una experiencia única en nuestra finca ecológica.</p>
+                <a href="cabanas.html" class="cta-btn">Reserva Ahora</a>
+            </div>
+        </div>
+        <div class="slide fade">
+            <img src="imagenes/imagenes (2).jpg" alt="Ecofinca 2">
+            <div class="hero-text">
+                <h2>Relájate en Verde</h2>
+                <p>Desconéctate del estrés. Reconéctate con la tierra.</p>
+                <a href="cabanas.html" class="cta-btn">Reserva Ahora</a>
+            </div>
+        </div>
+        <div class="slide fade">
+            <img src="imagenes/imagenes (3).jpg" alt="Ecofinca 3">
+            <div class="hero-text">
+                <h2>Explora, Respira, Disfruta</h2>
+                <p>Experiencias únicas en un paraíso natural.</p>
+                <a href="cabanas.html" class="cta-btn">Reserva Ahora</a>
+            </div>
+        </div>
+        <div class="slide fade">
+            <img src="imagenes/imagenes (4).jpg" alt="Ecofinca 4">
+            <div class="hero-text">
+                <h2>Aventura Sostenible</h2>
+                <p>Turismo ecológico y consciente en cada rincón.</p>
+                <a href="cabanas.html" class="cta-btn">Reserva Ahora</a>
+            </div>
+        </div>
+        <div class="slide fade">
+            <img src="imagenes/imagenes (5).jpg" alt="Ecofinca 5">
+            <div class="hero-text">
+                <h2>Sabores Naturales</h2>
+                <p>Del huerto a tu mesa. Orgánico y delicioso.</p>
+                <a href="cabanas.html" class="cta-btn">Reserva Ahora</a>
+            </div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+    </section>
+
+    <section class="features">
+        <div class="feature-box">
+            <h3>Alojamiento Eco-Friendly</h3>
+            <p>Habitaciones cómodas y sostenibles para una estadía relajante.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Experiencias en la Naturaleza</h3>
+            <p>Senderismo, avistamiento de aves y conexión con el entorno.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Productos Orgánicos</h3>
+            <p>Disfruta de alimentos frescos y naturales cultivados en la finca.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Ecofinca Salamanca - Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const mensaje = localStorage.getItem('registroExitoso');
+        const user = localStorage.getItem('isRegister');
+
+        if (mensaje) {
+            alert(mensaje);
+            localStorage.removeItem('registroExitoso');
+        }
+
+        document.getElementById('btn-logout').addEventListener('click', () => {
+            localStorage.removeItem('isRegister');
+            window.location.href = '/EcoFinca-Salamanca/mi-sitio-web/index.html';
+        });
+
+        if (user) {
+            document.getElementById('user').innerText = `Hola ${user}`;
+            document.querySelector('.login-btn').classList.add('hidden');
+            document.getElementById('btn-logout').classList.remove('hidden');
+        } else {
+            document.getElementById('btn-logout').classList.add('hidden');
+            document.querySelector('.login-btn').classList.remove('hidden');
+        }
+
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            const slides = document.querySelectorAll(".slide");
+            if (n > slides.length) slideIndex = 1;
+            if (n < 1) slideIndex = slides.length;
+            slides.forEach(slide => slide.style.display = "none");
+            slides[slideIndex - 1].style.display = "block";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+/* --- Estilos Generales --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* --- Header y Navegación --- */
+header {
+    background: #4CAF50;
+    color: rgb(0, 0, 0);
+    padding: 15px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-btn {
+    background: white;
+    color: #4CAF50;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+/* --- Sección Hero como Carrusel --- */
+.hero-slider {
+    position: relative;
+    overflow: hidden;
+    height: 350px;
+    width: 100%;
+    background-color: #a5d6a7;
+}
+
+.slide {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.5);
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+.hero-text h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: white;
+    color: #2e7d32;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #f1f8e9;
+    color: #1b5e20;
+}
+
+/* Flechas del slider */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 10px;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    user-select: none;
+    transform: translateY(-50%);
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* --- Footer --- */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* --- Estilos para Login --- */
+.login-container {
+    width: 40%;
+    margin: auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-top: 50px;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background-color: #45a049;
+}
+
+/* === Estilos exclusivos para cabanas.html === */
+body.cabanas-page {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+body.cabanas-page header {
+    background-color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+body.cabanas-page header h1 {
+    margin: 0;
+}
+
+body.cabanas-page nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+body.cabanas-page nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+body.cabanas-page nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+body.cabanas-page .login-btn {
+    background: #e6f4ea;
+    color: #2d572c;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+body.cabanas-page .combos {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+body.cabanas-page .combos select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+body.cabanas-page .combo {
+    background-color: #e6f4ea;
+    margin: 40px auto 20px;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: none;
+}
+
+body.cabanas-page .combo h3 {
+    margin-top: 0;
+}
+
+body.cabanas-page .cta-btn {
+    display: inline-block;
+    background: #FFD700;
+    color: black;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+body.cabanas-page footer {
+    background-color: #2d2d2d;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}
+
+/* Botón flotante para Contacto */
+.contact-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    transition: background-color 0.3s;
+}
+
+.contact-btn:hover {
+    background-color: #388e3c;
+}
+
+/* adaptacion a moviles */
+@media (max-width: 768px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .login-container {
+        width: 90%;
+    }
+
+    .hero-text h2 {
+        font-size: 1.5em;
+    }
+
+    .hero-text p {
+        font-size: 0.9em;
+    }
+
+    .cta-btn {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+
+    .contact-btn {
+        width: 90%;
+        left: 5%;
+        transform: none;
+        font-size: 14px;
+    }
+}
